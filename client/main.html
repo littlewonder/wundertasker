@@ -8,13 +8,11 @@
 
 <template name="taskList">
     <div class="alltask">
-        {{#each returnList}}
-        <div class="onetask">
-            <ul>
-                <li> <input type="checkbox" name="done" id="box"> <span class="{{result}}"> {{preference}}:{{title}} </span><input type="button" value="delete" id='rm'></li>
-            </ul>
-        </div>
-        {{/each}}
+        <ul>
+            {{#each returnList}}
+                    {{> taskitem}}
+            {{/each}}
+        </ul>
     </div>
     <p id="pending">Number of pending tasks: {{returnCount}}</p>
 </template>
@@ -28,5 +26,11 @@
             <input type="number" placeholder="Number>0" name="preference">
             <input type="submit" value="Add Task">
         </form>
+    </div>
+</template>
+
+<template name="taskitem">
+    <div class="onetask">
+        <li class="{{result}}"> <input type="checkbox" {{statusofbox}}><span class="{{statusofbox}}">{{preference}}:{{title}}</span><input type="button" value="delete" id='rm'></li>
     </div>
 </template>

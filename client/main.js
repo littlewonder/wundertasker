@@ -7,7 +7,20 @@ Template.taskList.helpers({
         });
     },
     'returnCount': function () {
-        return list.find().count();
+        return list.find({
+            status: false
+        }).count();
+    }
+});
+
+Template.taskitem.helpers({
+    'statusofbox': function () {
+        var isCompleted = this.status;
+        if (isCompleted) {
+            return "checked";
+        } else {
+            return "";
+        }
     }
 });
 
@@ -22,8 +35,27 @@ Template.taskList.events({
             list.remove(taskid);
         }
     },
-
-    'click #box': function () {}
+    'change [type=checkbox]': function () {
+        let taskid = Session.get('hovered');
+        let status = this.status;
+        if (status) {
+            list.update({
+                _id: taskid
+            }, {
+                $set: {
+                    status: false
+                }
+            });
+        } else {
+            list.update({
+                _id: taskid
+            }, {
+                $set: {
+                    status: true
+                }
+            });
+        }
+    }
 });
 
 Template.newTask.events({
