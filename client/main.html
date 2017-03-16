@@ -1,0 +1,32 @@
+<head>
+    <title>wunderTasker</title>
+</head>
+
+<body>
+    {{> taskList}} {{> newTask}}
+</body>
+
+<template name="taskList">
+    <div class="alltask">
+        {{#each returnList}}
+        <div class="onetask">
+            <ul>
+                <li> <input type="checkbox" name="done" id="box"> <span class="{{result}}"> {{preference}}:{{title}} </span><input type="button" value="delete" id='rm'></li>
+            </ul>
+        </div>
+        {{/each}}
+    </div>
+    <p id="pending">Number of pending tasks: {{returnCount}}</p>
+</template>
+
+<template name="newTask">
+    <div class="newform">
+        <form>
+            <label>Add a New Task </label>
+            <input type="text" placeholder="Task Name" name="title">
+            <label> Task preference </label>
+            <input type="number" placeholder="Number>0" name="preference">
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+</template>
