@@ -8,31 +8,31 @@
 </body>
 
 <template name="taskList">
-    <div class="alltask">
-        <ul>
+    <p id="pending">Number of pending tasks: {{returnCount}}</p>
+    <div >
+        <ul class="alltask">
             {{#each returnList}}
                     {{> taskitem}}
             {{/each}}
         </ul>
     </div>
-    <p id="pending">Number of pending tasks: {{returnCount}}</p>
+
 </template>
 
 <template name="newTask">
+    <a id="newtask" class="visible">Add a new Task</a>
     <div class="newform">
-        <form>
-            <label>Add a New Task </label>
+        <form id="taskform" class="invisible">
             <input type="text" placeholder="Task Name" name="title">
-            <label> Task preference </label>
-            <input type="number" placeholder="Number>0" name="preference">
-            <input type="submit" value="Add Task">
+            <input type="number" placeholder="Enter the task preference" name="preference">
+            <button type="submit">Add Task</button>
         </form>
     </div>
 </template>
 
 <template name="taskitem">
     <div class="onetask">
-        <li class="{{result}}"> <input type="checkbox" {{statusofbox}}><span class="{{statusofbox}}">{{preference}}:{{title}}</span><input type="button" value="delete" id='rm'></li>
+        <li class="{{result}}" id="partitem"> <input type="checkbox" id="checker" {{statusofbox}}> <span class="{{statusofbox}}">{{title}}</span><input type="button" value="Delete" id='rm'></li>
     </div>
 </template>
 
@@ -47,6 +47,7 @@
                     <input type="password" name="registerPasswordConfirm" placeholder="Confirm password">
                     <button type="submit" class="login-button">Register</button>
                     <p class="invisible" id="error">Passwords dont match</p>
+                    <p class="invisible" id="error3">Come On! Fill the details</p>
                 </form>
             </div>
     </div>
@@ -59,14 +60,14 @@
                 <input type="text" placeholder="Email Address" name="loginEmail">
                 <input type="password" placeholder="Password" name="loginPassword">
                 <button type="submit" class="login-button">Login</button>
-                <p class="invisible" id="error2">Wrong Credentials</p>
+                <p id="error2" class="invisible" >Wrong Credentials</p>
             </form>
             </div>
     </div>
 </template>
 
 <template name="dashboard" class="visible">
-    <p>You're logged in.</p>
+    <p id="wlcm">Hello. Welcome to wunderTask</p>
     {{> taskList}} {{> newTask}}
     <p><a href="#" class="logout">Logout</a></p>
 </template>

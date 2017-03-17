@@ -2,6 +2,18 @@ li {
     list-style: none;
 }
 
+#error {
+    font-size: 12px;
+}
+
+#error3 {
+    font-size: 12px;
+}
+
+#error2 {
+    font-size: 12px;
+}
+
 .checked {
     text-decoration: line-through;
     opacity: 0.5;
@@ -84,7 +96,6 @@ body :-ms-input-placeholder {
 .container {
     max-width: 600px;
     margin: 0 auto;
-    padding: 80px 0;
     height: 400px;
     text-align: center;
 }
@@ -136,6 +147,12 @@ form button {
     transition-duration: 0.25s;
 }
 
+form button:hover {
+    background: #53e3a6;
+    color: white;
+    transform: scale(1.1);
+}
+
 #buttons {
     display: flex;
     flex-direction: row;
@@ -154,17 +171,6 @@ p {
     margin: 1.5vw;
 }
 
-.active {
-    font-weight: 400;
-    padding: 0.5vw;
-    border-bottom: 0.2vw solid white;
-}
-
-.inactive {
-    font-weight: 200;
-    opacity: 0.5;
-}
-
 p {
     font-size: 2vw;
     margin-left: 2vw;
@@ -176,7 +182,7 @@ p {
     -moz-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     position: absolute;
-    top: 22%;
+    top: 12vw;
     left: 25%;
     width: 50%;
 }
@@ -186,7 +192,95 @@ p {
     -moz-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     position: absolute;
-    top: 22%;
+    top: 12vw;
     left: 25%;
     width: 50%;
+}
+
+.active {
+    font-weight: 400;
+    padding: 0.5vw;
+    border-bottom: 0.2vw solid white;
+}
+
+.inactive {
+    font-weight: 100;
+    opacity: 0.5;
+}
+
+#wlcm,
+#pending {
+    font-weight: 100;
+    text-align: center;
+    font-size: 16px;
+}
+
+#taskform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#taskform input {
+    font-size: 12px;
+}
+
+.logout {
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.logout:hover {
+    text-decoration: underline;
+}
+
+#rm {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    text-decoration: underline;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.alltask {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #50a3a2;
+    padding: 10px;
+}
+
+#partitem {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#partitem input {
+    margin-right: 5px;
+}
+
+#newtask {
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+    margin-top: 20px;
+    border: 1px solid white;
+    width: 250px;
+    left: 50%;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#taskform {
+    transition: all 0.3s ease-out;
 }

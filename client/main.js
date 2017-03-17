@@ -78,6 +78,17 @@ Template.newTask.events({
         }
         $('[name="title"]').val('');
         $('[name="preference"]').val('');
+    },
+    'click #newtask':function(){
+        event.preventDefault();
+        let item = document.getElementById("taskform");
+        if(item.className==="invisible"){
+            document.getElementById("taskform").className="visible";
+            document.getElementById("newtask").innerHTML="Close";
+        }else{
+            document.getElementById("taskform").className="invisible";
+            document.getElementById("newtask").innerHTML="Add Task";
+        }
     }
 });
 
@@ -92,12 +103,20 @@ Template.register.events({
         Accounts.createUser({
         email: emailVar,
         password: passwordVar
-    });
+    },
+        function(error){
+            $("#error3").attr('class', 'visible');
+        });
     Meteor.loginWithPassword(emailVar, passwordVar);
         }else{
         $("#error").attr('class', 'visible');
         }
-    }});
+    },
+    'click form': function(){
+        $("#error").attr('class', 'invisible');
+        $("#error3").attr('class', 'invisible');
+    }
+});
 
     Template.login.events({
     'submit form': function(event) {
