@@ -83,16 +83,17 @@ Template.newTask.events({
 
 Template.register.events({
         'submit form': function(event) {
-            event.preventDefault();
+        event.preventDefault();
         var emailVar = event.target.registerEmail.value;
         var passwordVar = event.target.registerPassword.value;
         var confirmPasswordVar = event.target.registerPasswordConfirm.value;
         if(passwordVar===confirmPasswordVar){
-            $("#error").attr('class', 'invisible');
+        $("#error").attr('class', 'invisible');
         Accounts.createUser({
         email: emailVar,
         password: passwordVar
-        });
+    });
+    Meteor.loginWithPassword(emailVar, passwordVar);
         }else{
         $("#error").attr('class', 'visible');
         }
@@ -116,11 +117,18 @@ Template.dashboard.events({
 
 Template.login.rendered = function(){
             var toggle = function() {
-            let status = document.getElementById("loginform").className;
+            let status = document.getElementById("loginwrap").className;
+            let otherstatus = document.getElementById("registerwrap").className;
             if (status === "invisible") {
-                document.getElementById("loginform").className = "visible";
+                document.getElementById("loginwrap").className = "visible";
+                if(otherstatus==="visible"){
+                    document.getElementById("registerwrap").className = "invisible";
+                    document.getElementById("registerbtn").className="inactive";
+                }
+            document.getElementById("loginbtn").className="active";
             } else {
-                document.getElementById("loginform").className = "invisible";
+                document.getElementById("loginwrap").className = "invisible";
+                document.getElementById("loginbtn").className="inactive";
             }
         }
         let test = document.getElementById("loginbtn");
@@ -129,11 +137,18 @@ Template.login.rendered = function(){
 
 Template.register.rendered = function(){
             var toggle = function() {
-            let status = document.getElementById("registerform").className;
+            let status = document.getElementById("registerwrap").className;
+            let otherstatus = document.getElementById("loginwrap").className;
             if (status === "invisible") {
-                document.getElementById("registerform").className = "visible";
+                document.getElementById("registerwrap").className = "visible";
+                document.getElementById("registerbtn").className="active";
+                if(otherstatus === "visible"){
+                    document.getElementById("loginwrap").className = "invisible";
+                    document.getElementById("loginbtn").className="inactive";
+                }
             } else {
-                document.getElementById("registerform").className = "invisible";
+                document.getElementById("registerwrap").className = "invisible";
+                document.getElementById("registerbtn").className="inactive";
             }
         }
         let test = document.getElementById("registerbtn");

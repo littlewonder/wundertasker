@@ -1,9 +1,10 @@
 <head>
     <title>wunderTasker</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 </head>
 
 <body>
-    {{#if currentUser}} {{>dashboard}} {{else}} {{> register}} {{> login}} {{/if}}
+    {{#if currentUser}}{{> bg}} {{>dashboard}} {{else}} {{> bg}} {{> loginoptions}}{{>login}} {{>register}}{{/if}}
 </body>
 
 <template name="taskList">
@@ -38,32 +39,48 @@
 <template name="noRoutesTemplate"></template>
 
 <template name="register">
-    <a id="registerbtn">Register</a>
-    <form id="registerform" class="invisible">
-        <label for="registerEmail">Email Address</label>
-        <input type="email" name="registerEmail">
-        <label for="registerPassword">Password</label>
-        <input type="password" name="registerPassword">
-        <label for="registerPasswordConfirm">Confirm Password</label>
-        <input type="password" name="registerPasswordConfirm">
-        <p class="invisible" id="error">Passwords dont match</p>
-        <input type="submit" value="Register">
-    </form>
+    <div id="registerwrap" class="invisible">
+        <div class="container">
+                <form id="registerform" class="form">
+                    <input type="email" name="registerEmail" placeholder="Email Address">
+                    <input type="password" name="registerPassword" placeholder="Password">
+                    <input type="password" name="registerPasswordConfirm" placeholder="Confirm password">
+                    <button type="submit" class="login-button">Register</button>
+                    <p class="invisible" id="error">Passwords dont match</p>
+                </form>
+            </div>
+    </div>
 </template>
 
 <template name="login">
-    <a id="loginbtn">Login</a>
-    <form id="loginform" class="invisible">
-        <label for="loginEmail">Email Address </label>
-        <input type="email" name="loginEmail">
-        <label for="loginPassword">Password</label>
-        <input type="password" name="loginPassword">
-        <input type="submit" value="Login">
-    </form>
+    <div class="visible" id="loginwrap">
+        <div class="container">
+            <form id="loginform" class="form">
+                <input type="text" placeholder="Email Address" name="loginEmail">
+                <input type="password" placeholder="Password" name="loginPassword">
+                <button type="submit" class="login-button">Login</button>
+            </form>
+            </div>
+    </div>
 </template>
 
 <template name="dashboard" class="visible">
     <p>You're logged in.</p>
     {{> taskList}} {{> newTask}}
     <p><a href="#" class="logout">Logout</a></p>
+</template>
+
+<template name="bg">
+    <div class="wrapper">
+    </div>
+</template>
+
+<template name="loginoptions">
+        <div id="maininfo">
+        <p>Welcome to WunderTasker</p>
+        <div id="buttons">
+            <p><a id="loginbtn" class="active">Login</a></p>
+            <p><a id="registerbtn" class="inactive">Register</a></p>
+        </div>
+    </div>
 </template>
