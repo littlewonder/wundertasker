@@ -86,12 +86,17 @@ Template.register.events({
             event.preventDefault();
         var emailVar = event.target.registerEmail.value;
         var passwordVar = event.target.registerPassword.value;
+        var confirmPasswordVar = event.target.registerPasswordConfirm.value;
+        if(passwordVar===confirmPasswordVar){
+            $("#error").attr('class', 'invisible');
         Accounts.createUser({
         email: emailVar,
         password: passwordVar
         });
+        }else{
+        $("#error").attr('class', 'visible');
         }
-    });
+    }});
 
     Template.login.events({
     'submit form': function(event) {
