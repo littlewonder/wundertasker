@@ -102,10 +102,17 @@ Template.register.events({
     Template.login.events({
     'submit form': function(event) {
         event.preventDefault();
+        $("#error2").attr('class', 'invisible');
         var emailVar = event.target.loginEmail.value;
         var passwordVar = event.target.loginPassword.value;
-        Meteor.loginWithPassword(emailVar, passwordVar);
+        Meteor.loginWithPassword(emailVar, passwordVar, function(error){
+            if(error){$("#error2").attr('class', 'visible');}
+        });
+    },
+    'click form': function(){
+        $("#error2").attr('class', 'invisible');
     }
+
 });
 
 Template.dashboard.events({
