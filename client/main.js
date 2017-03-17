@@ -1,15 +1,13 @@
 Template.taskList.helpers({
     'returnList': function () {
-        return list.find({}, {
+        return list.find({ addedby: Meteor.userId() }, {
             sort: {
                 preference: 1
             }
         });
     },
     'returnCount': function () {
-        return list.find({
-            status: false
-        }).count();
+        return list.find({ addedby: Meteor.userId(), status: false }).count();
     }
 });
 
@@ -63,6 +61,7 @@ Template.newTask.events({
         event.preventDefault();
         let title = $('[name="title"]').val();
         let pref = $('[name="preference"]').val();
+        let currentuserid = Meteor.userId();
         if (pref === "") {
             pref = list.find().count() + 1;
         }
@@ -74,9 +73,38 @@ Template.newTask.events({
                 preference: pref,
                 date: new Date(),
                 status: false,
+                addedby: currentuserid
             });
         }
         $('[name="title"]').val('');
         $('[name="preference"]').val('');
+    }
+});
+
+Template.register.events({
+        'submit form': function(event) {
+            event.preventDefault();
+        var emailVar = event.target.registerEmail.value;
+        var passwordVar = event.target.registerPassword.value;
+        Accounts.createUser({
+        email: emailVar,
+        password: passwordVar
+        });
+        }
+    });
+
+    Template.login.events({
+    'submit form': function(event) {
+        event.preventDefault();
+        var emailVar = event.target.loginEmail.value;
+        var passwordVar = event.target.loginPassword.value;
+        Meteor.loginWithPassword(emailVar, passwordVar);
+    }
+});
+
+Template.dashboard.events({
+    'click .logout': function(event){
+        event.preventDefault();
+        Meteor.logout();
     }
 });

@@ -3,7 +3,8 @@
 </head>
 
 <body>
-    {{> taskList}} {{> newTask}}
+    {{#if currentUser}} {{>dashboard}} {{else}} {{> register}} {{> login}} {{/if}}
+
 </body>
 
 <template name="taskList">
@@ -33,4 +34,34 @@
     <div class="onetask">
         <li class="{{result}}"> <input type="checkbox" {{statusofbox}}><span class="{{statusofbox}}">{{preference}}:{{title}}</span><input type="button" value="delete" id='rm'></li>
     </div>
+</template>
+
+<template name="noRoutesTemplate"></template>
+
+<template name="register">
+    <form id="registerform">
+        <label for="registerEmail">Email Address</label>
+        <input type="email" name="registerEmail">
+        <label for="registerPassword">Password</label>
+        <input type="password" name="registerPassword">
+        <input type="submit" value="Register">
+    </form>
+</template>
+
+<template name="login">
+    <form id="loginform">
+        <label for="loginEmail">Email Address </label>
+        <input type="email" name="loginEmail">
+        <label for="loginPassword">Password</label>
+        <input type="password" name="loginPassword">
+        <label for="loginPasswordConfirm">Confirm Password</label>
+        <input type="password" name="loginPasswordConfirm">
+        <input type="submit" value="Login">
+    </form>
+</template>
+
+<template name="dashboard">
+    <p>You're logged in.</p>
+    {{> taskList}} {{> newTask}}
+    <p><a href="#" class="logout">Logout</a></p>
 </template>
