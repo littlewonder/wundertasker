@@ -113,3 +113,29 @@ Template.dashboard.events({
         Meteor.logout();
     }
 });
+
+Template.login.rendered = function(){
+            var toggle = function() {
+            let status = document.getElementById("loginform").className;
+            if (status === "invisible") {
+                document.getElementById("loginform").className = "visible";
+            } else {
+                document.getElementById("loginform").className = "invisible";
+            }
+        }
+        let test = document.getElementById("loginbtn");
+        test.addEventListener('click', toggle);
+};
+
+Template.register.rendered = function(){
+            var toggle = function() {
+            let status = document.getElementById("registerform").className;
+            if (status === "invisible") {
+                document.getElementById("registerform").className = "visible";
+            } else {
+                document.getElementById("registerform").className = "invisible";
+            }
+        }
+        let test = document.getElementById("registerbtn");
+        test.addEventListener('click', toggle);
+};

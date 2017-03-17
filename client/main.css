@@ -14,3 +14,11 @@ li {
 .visible {
     display: block;
 }
+
+#loginbtn{
+    cursor: pointer;
+}
+
+#registerbtn{
+    cursor: pointer;
+}

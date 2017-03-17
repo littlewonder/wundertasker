@@ -4,7 +4,6 @@
 
 <body>
     {{#if currentUser}} {{>dashboard}} {{else}} {{> register}} {{> login}} {{/if}}
-
 </body>
 
 <template name="taskList">
@@ -39,7 +38,8 @@
 <template name="noRoutesTemplate"></template>
 
 <template name="register">
-    <form id="registerform">
+    <a id="registerbtn">Register</a>
+    <form id="registerform" class="invisible">
         <label for="registerEmail">Email Address</label>
         <input type="email" name="registerEmail">
         <label for="registerPassword">Password</label>
@@ -52,7 +52,8 @@
 </template>
 
 <template name="login">
-    <form id="loginform">
+    <a id="loginbtn">Login</a>
+    <form id="loginform" class="invisible">
         <label for="loginEmail">Email Address </label>
         <input type="email" name="loginEmail">
         <label for="loginPassword">Password</label>
@@ -61,7 +62,7 @@
     </form>
 </template>
 
-<template name="dashboard">
+<template name="dashboard" class="visible">
     <p>You're logged in.</p>
     {{> taskList}} {{> newTask}}
     <p><a href="#" class="logout">Logout</a></p>
