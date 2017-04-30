@@ -6,25 +6,25 @@ Checkout the v2 [here](https://github.com/littlewonder/wundertasker-revisited)
 ## To Run
 
 Install Meteor
-
->curl https://install.meteor.com | sh
-
+```
+curl https://install.meteor.com | sh
+```
 Git Clone the Repository 
-
-> git clone https://github.com/littlewonder/wundertasker.git
-
+```
+git clone https://github.com/littlewonder/wundertasker.git
+```
 Navigate to the directory
-
->cd wundertasker
-
+```
+cd wundertasker
+```
 Install dependencies
-
->meteor npm install
-
+```
+meteor npm install
+```
 Run the application by
-
->meteor
-
+```
+meteor
+```
 Navigate to localhost:3000
 
 ## Screenshots
