@@ -1,4 +1,4 @@
-# WunderTasker: A ToDo Application
+# WunderTasker
 To-do App using MeteorJS with authentication feature. Tasks are added dynamically in the order of priority
 
 Checkout the v2 [here](https://github.com/littlewonder/wundertasker-revisited)
